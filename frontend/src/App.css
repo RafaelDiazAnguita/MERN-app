@@ -1,0 +1,46 @@
+/** General **/  
+body {
+  background-color: lightblue !important;
+}
+.custom-card {
+  background-color: #fff;
+  border-radius: 16px;
+  -webkit-box-shadow: 0px 0px 17px -3px #000000; 
+  box-shadow: 0px 0px 17px -3px #000000;
+}
+
+/** Note List **/
+.date-col {
+  align-items: flex-end;
+    display: flex;
+}
+.note-content-view {
+  word-break: break-all;
+}
+
+/** Create Note **/
+#note-creation{
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 15%;
+}
+#noteContent{
+  margin-top: 3%;
+}
+
+#userSelect {
+  width: 50%;
+}
+
+/** Create User **/
+
+#search-form{
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+#search-form input{
+  width: 25%;
+  margin-right: 2%;
+}
+
