@@ -1,1 +1,1 @@
-##Notes and Users app built with MERN Stack.
+# Notes and Users app built with MERN Stack.
