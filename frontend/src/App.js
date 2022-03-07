@@ -6,7 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './components/Navigation';
 import NotesList from './components/NotesList';
 import CreateNote from './components/CreateNote';
-import CreateUser from './components/CreateUser';
+import LogIn from './components/LogIn';
+import SignUp from './components/SignUp';
 
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
           <Route path="/" element={<NotesList/>}/>
           <Route path="/edit/:id" element={<CreateNote/>}/>
           <Route path="/create" element={<CreateNote/>}/>
-          <Route path="/user" element={<CreateUser/>}/>
+          <Route path="/login" element={<LogIn/>}/>
+          <Route path="/signup" element={<SignUp/>}/>
         </Routes>
         
 

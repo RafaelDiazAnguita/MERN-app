@@ -13,17 +13,13 @@ class CreateNote extends Component {
   }
 
   async componentDidMount(){
-
-      this.getUsers();
       
       if(this.props.editId){
         const res = await axios.get('http://localhost:4000/api/notes/' + this.props.editId);
         const title = document.getElementById('noteTitle');
         const content = document.getElementById('noteContent');
-        const author = document.getElementById('noteAuthor');
         title.value = res.data.title;
         content.value = res.data.content;
-        author.value = res.data.author;
         this.setState({
           editing:true
         });
@@ -34,13 +30,13 @@ class CreateNote extends Component {
      e.preventDefault();
      const title = document.getElementById('noteTitle');
      const content = document.getElementById('noteContent');
-     const author = document.getElementById('noteAuthor');
 
+     console.log(sessionStorage['username']);
      const newNote = {
         title: title.value,
         content: content.value,
         date: this.state.date,
-        author: author.value
+        author: sessionStorage['username']
      }
 
      if(this.state.editing){
@@ -57,26 +53,10 @@ class CreateNote extends Component {
     this.setState({date: newdate});
   }
 
-  getUsers = async () => {
-    const res = await axios.get('http://localhost:4000/api/users');
-    this.setState({users: res.data});
-  }
-
   render() {
     return (
       <div className='custom-card py-5 px-5' id='note-creation'>
         <h3 className='mb-3'>Create new Note</h3>
-
-        <div className="input-group mb-3">
-          <div className="input-group-prepend">
-            <label className="input-group-text">Users</label>
-          </div>
-          <select className="custom-select" id="noteAuthor">
-            {
-              this.state.users.map( user => <option value={user.username} key={user._id}>{user.username}</option>)
-            }
-          </select>
-        </div>
 
         <form onSubmit={this.addNote}>
 
@@ -85,7 +65,7 @@ class CreateNote extends Component {
             <textarea className='form-control' id="noteContent" placeholder='Content...' required/>
           </div>
           
-          <div className='form-group'>
+          <div className='form-group mt-4'>
             <DatePicker 
               className='form-control'
               selected={this.state.date}
@@ -93,9 +73,8 @@ class CreateNote extends Component {
               />
           </div>
 
-          <button type="submit" className='btn btn-primary mt-3'>
-            Save
-          </button>
+          <button type="submit" className='btn btn-primary mt-3'>Save</button>
+          
         </form>
       </div>
     )
